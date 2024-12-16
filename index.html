@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo de JavaScript</title>
+</head>
+<body>
+
+ 
+    <h1 id="titulo">¡Feliz Navidad!</h1>
+    <img id="imagenNavidad" src="https://http2.mlstatic.com/D_NQ_NP_664704-MLU72761412408_112023-O.webp" alt="Árbol de Navidad" width="300">
+
+    <button id="cambiarTexto">Cambiar Texto y Color</button>
+    <button id="cambiarImagen">Cambiar Imagen</button>
+
+    <br><br>
+    <input type="number" id="montoCompra" input="Ingresa monto de compra" />
+    <button id="calcularDescuento">Calcular Descuento</button>
+
+    <p id="resultadoDescuento"></p>
+
+    <h3>Números del 1 al 5:</h3>
+    <ul id="numeros"></ul>
+
+    <script>
+        const titulo = document.querySelector('#titulo')
+        const cambiarTexto = document.querySelector('#cambiarTexto')
+        
+        cambiarTexto.addEventListener('click', function() {
+            titulo.textContent = "¡Feliz Navidad y Próspero Año Nuevo!"
+            titulo.style.color = "red"
+        })
+
+        const imagen = document.querySelector('#imagenNavidad');
+        const cambiarImagen = document.querySelector('#cambiarImagen')
+        
+        cambiarImagen.addEventListener('click', function() {
+            imagen.src = 'https://billiken.lat/wp-content/uploads/2024/02/dt-14.png';  
+            imagen.alt = "";  
+        });
+
+        const montoCompraInput = document.querySelector('#montoCompra')
+        const resultadoDescuento = document.querySelector('#resultadoDescuento')
+        const calcularDescuento = document.querySelector('#calcularDescuento')
+        
+        calcularDescuento.addEventListener('click', function() {
+            const montoCompra = number(montoCompraInput.value)
+
+            let descuento = 0;
+            if (montoCompra > 1000) {
+                descuento = 0.20;  
+            } else if (montoCompra > 500) {
+                descuento = 0.10;  
+            }
+
+            const montoFinal = montoCompra - (montoCompra * descuento)
+            resultadoDescuento.textContent = `Monto final después del descuento: $${montoFinal.toFixed(2)}`
+        });
+
+        const numeros = [1, 2, 3, 4, 5];
+        const listaNumeros = document.querySelector('#numeros')
+
+        for (let i = 0; i < numeros.length; i++) {
+            const li = document.createElement('li')
+            li.textContent = numeros[i]
+            listaNumeros.appendChild(li)
+        }
+    </script>
+
+</body>
+</html>
